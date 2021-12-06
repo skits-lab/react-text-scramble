@@ -1,0 +1,12 @@
+{
+  "folders": [
+    {
+      "path": ".."
+    }
+  ],
+  "settings": {
+    "window.zoomLevel": -0.5,
+    "prettier.printWidth": 100,
+    "editor.rulers": [100]
+  }
+}

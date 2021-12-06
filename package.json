@@ -1,0 +1,89 @@
+{
+  "name": "@skits/react-text-scramble",
+  "version": "0.0.0-development",
+  "license": "MIT",
+  "description": "Lightweight zero dependency React text scrambler",
+  "keywords": [
+    "text scramble",
+    "React Text Scramble",
+    "text scramble component",
+    "text scramble hook",
+    "react",
+    "typescript"
+  ],
+  "author": "samwyness",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skits-lab/react-text-scramble.git"
+  },
+  "homepage": "https://github.com/skits-lab/react-text-scramble#readme",
+  "bugs": {
+    "url": "https://github.com/skits-lab/react-text-scramble/issues"
+  },
+  "main": "./lib/cjs/index.js",
+  "module": "./lib/esm/index.js",
+  "types": "./lib/esm/index.d.ts",
+  "source": "src/index.tsx",
+  "engines": {
+    "node": ">=12"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc --watch",
+    "build": "npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc",
+    "build:cjs": "tsc --module commonjs --outDir lib/cjs",
+    "prepublish": "npm run build",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "semantic-release": "semantic-release"
+  },
+  "peerDependencies": {
+    "react": ">=16.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@commitlint/cli": "^15.0.0",
+    "@commitlint/config-conventional": "^15.0.0",
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/npm": "^8.0.3",
+    "@storybook/addon-actions": "^6.4.7",
+    "@storybook/addon-essentials": "^6.4.7",
+    "@storybook/addon-links": "^6.4.7",
+    "@storybook/react": "^6.4.7",
+    "@types/node": "^16.11.11",
+    "@types/react": "^17.0.37",
+    "@typescript-eslint/eslint-plugin": "^5.5.0",
+    "@typescript-eslint/parser": "^5.5.0",
+    "babel-loader": "^8.2.3",
+    "eslint": "^8.4.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-react": "^7.27.1",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "husky": "^7.0.4",
+    "prettier": "^2.5.0",
+    "react": "^17.0.2",
+    "semantic-release": "^18.0.1",
+    "typescript": "^4.5.2"
+  },
+  "eslintConfig": {
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:react/recommended",
+      "plugin:react-hooks/recommended",
+      "prettier"
+    ]
+  }
+}

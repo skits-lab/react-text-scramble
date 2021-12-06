@@ -1,0 +1,86 @@
+{
+  "branches": [
+    "main"
+  ],
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    [
+      "@semantic-release/release-notes-generator",
+      {
+        "preset": "conventionalcommits",
+        "presetConfig": {
+          "types": [
+            {
+              "type": "feat",
+              "section": ":rocket: Features",
+              "hidden": false
+            },
+            {
+              "type": "fix",
+              "section": ":bug: Bug Fixes",
+              "hidden": false
+            },
+            {
+              "type": "docs",
+              "section": ":books: Documentation",
+              "hidden": false
+            },
+            {
+              "type": "style",
+              "section": ":nail_care: Styles",
+              "hidden": false
+            },
+            {
+              "type": "refactor",
+              "section": ":wrench: Code Refactoring",
+              "hidden": false
+            },
+            {
+              "type": "perf",
+              "section": ":zap: Performance Improvements",
+              "hidden": false
+            },
+            {
+              "type": "test",
+              "section": ":rotating_light: Tests",
+              "hidden": false
+            },
+            {
+              "type": "build",
+              "section": ":package: Build",
+              "hidden": false
+            },
+            {
+              "type": "ci",
+              "section": ":vertical_traffic_light: CI",
+              "hidden": false
+            },
+            {
+              "type": "revert",
+              "section": ":see_no_evil: Revert",
+              "hidden": false
+            },
+            {
+              "type": "chore",
+              "section": ":wrench: Chores",
+              "hidden": true
+            }
+          ]
+        }
+      }
+    ],
+    "@semantic-release/changelog",
+    "@semantic-release/npm",
+    "@semantic-release/github",
+    [
+      "@semantic-release/git",
+      {
+        "assets": [
+          "CHANGELOG.md",
+          "package.json",
+          "package-lock.json"
+        ]
+      }
+    ]
+  ]
+}

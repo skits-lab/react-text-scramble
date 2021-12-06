@@ -30,7 +30,7 @@ export default function App() {
 #### Example usage with props
 
 ```jsx
-import Cursor from '@skits/react-cursor';
+import TextScramble from '@skits/react-text-scramble';
 
 export default function App() {
   return (
@@ -54,9 +54,9 @@ export default function App() {
 #### Example custom component with `useTextScramble` hook
 
 ```jsx
-import Cursor from '@skits/react-cursor';
+import { useTextScramble } from '@skits/react-text-scramble';
 
-export const TextScramble: React.FC<TextScrambleProps> = ({ text }) => {
+export const CustomTextScrambler: React.FC<TextScrambleProps> = ({ text }) => {
   const { state, reveal } = useTextScramble(text, {
     characters: '0123456789',
     speed: 50,
@@ -90,15 +90,25 @@ Flexible component API
 
 ## `useTextScramble`
 
-### Options
+```ts
+const useTextScramble: (
+  text: string,
+  options?: TextScrambleOptions | undefined
+) => {
+  state: BaffleState;
+  reveal: (revealSpeed: any, delay: any, revealMode: RevealMode) => void;
+  start: () => void;
+  stop: () => void;
+};
+```
+
+### TextScrambleOptions
 
 | Option       | Type     | Description                                       | Default                                        |
 | ------------ | -------- | ------------------------------------------------- | ---------------------------------------------- |
 | `characters` | string   | The characters used to scramble the provided text | `abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+-={}[]` |
 | `exclude`    | string[] | Characters to exclude from the text scrambler     | `[' ']`                                        |
 | `speed`      | string   | The speed used when scrambling the provided text  | `50`                                           |
-
-**Usage:** `useTextScramble(text, options)`
 
 ---
 

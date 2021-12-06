@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect } from 'react';
+import { SYMBOLS } from './constants';
 import { RevealMode } from './obfuscator';
 import { useTextScramble } from './useTextScramble';
 
@@ -17,7 +18,7 @@ type TextScrambleProps = {
 export const TextScramble: React.FC<TextScrambleProps> = ({
   text,
   wrappingElement,
-  characters,
+  characters = SYMBOLS,
   autostart = true,
   scrambleSpeed = 50,
   revealDelay = 500,

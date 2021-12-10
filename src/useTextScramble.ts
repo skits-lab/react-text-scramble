@@ -2,12 +2,12 @@ import { useCallback, useEffect, useMemo, useReducer, useRef } from 'react';
 import { getTruthyIndices } from './utils';
 import Obfuscator, { RevealMode } from './obfuscator';
 import { baffleReducer, initialState } from './reducer';
-import { SYMBOLS } from './constants';
+import { DEFAULT_SCRAMBLE_SPEED, SYMBOLS } from './constants';
 
 const defaultConfig = {
   characters: SYMBOLS,
   exclude: [' '],
-  speed: 50,
+  speed: DEFAULT_SCRAMBLE_SPEED,
 };
 
 type TextScrambleConfig = {

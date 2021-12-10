@@ -1,5 +1,10 @@
 import React, { useCallback, useEffect } from 'react';
-import { SYMBOLS } from './constants';
+import {
+  DEFAULT_REVEAL_DELAY,
+  DEFAULT_REVEAL_SPEED,
+  DEFAULT_SCRAMBLE_SPEED,
+  SYMBOLS,
+} from './constants';
 import { RevealMode } from './obfuscator';
 import { useTextScramble } from './useTextScramble';
 
@@ -21,10 +26,10 @@ export const TextScramble: React.FC<TextScrambleProps> = ({
   wrappingElement,
   characters = SYMBOLS,
   autostart = true,
-  scrambleSpeed = 30,
+  scrambleSpeed = DEFAULT_SCRAMBLE_SPEED,
   revealText = false,
-  revealSpeed = 100,
-  revealDelay = 1000,
+  revealSpeed = DEFAULT_REVEAL_SPEED,
+  revealDelay = DEFAULT_REVEAL_DELAY,
   revealMode = 'random',
   onRevealComplete,
 }) => {

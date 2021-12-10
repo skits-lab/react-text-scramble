@@ -39,10 +39,10 @@ Default.args = {
   autostart: true,
   wrappingElement: 'p',
   characters: SYMBOLS,
-  scrambleSpeed: 50,
+  scrambleSpeed: 30,
   revealText: false,
-  revealSpeed: 50,
-  revealDelay: 0,
+  revealSpeed: 100,
+  revealDelay: 1000,
   revealMode: 'random',
   onRevealComplete: () => console.log('Text revealed!'),
 };

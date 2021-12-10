@@ -21,10 +21,10 @@ export const TextScramble: React.FC<TextScrambleProps> = ({
   wrappingElement,
   characters = SYMBOLS,
   autostart = true,
-  scrambleSpeed = 50,
-  revealDelay = 500,
+  scrambleSpeed = 30,
   revealText = false,
-  revealSpeed,
+  revealSpeed = 100,
+  revealDelay = 1000,
   revealMode = 'random',
   onRevealComplete,
 }) => {

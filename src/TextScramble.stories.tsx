@@ -44,4 +44,5 @@ Default.args = {
   revealSpeed: 50,
   revealDelay: 0,
   revealMode: 'random',
+  onRevealComplete: () => console.log('Text revealed!'),
 };

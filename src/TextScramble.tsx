@@ -13,6 +13,7 @@ type TextScrambleProps = {
   revealDelay?: number;
   revealSpeed?: number;
   revealMode?: RevealMode;
+  onRevealComplete?: () => void;
 };
 
 export const TextScramble: React.FC<TextScrambleProps> = ({
@@ -25,6 +26,7 @@ export const TextScramble: React.FC<TextScrambleProps> = ({
   revealText = false,
   revealSpeed,
   revealMode = 'random',
+  onRevealComplete,
 }) => {
   const { state, reveal, start, stop } = useTextScramble(text, {
     characters,
@@ -32,8 +34,8 @@ export const TextScramble: React.FC<TextScrambleProps> = ({
   });
 
   const handleRevealText = useCallback(
-    () => reveal(revealSpeed, revealDelay, revealMode),
-    [revealDelay, reveal, revealMode, revealSpeed],
+    () => reveal(revealSpeed, revealDelay, revealMode, onRevealComplete),
+    [reveal, revealSpeed, revealDelay, revealMode, onRevealComplete],
   );
 
   useEffect(() => {

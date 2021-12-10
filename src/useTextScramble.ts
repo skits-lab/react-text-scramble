@@ -70,7 +70,7 @@ export const useTextScramble = (text: string, options?: TextScrambleOptions) => 
    * initialize each element.
    */
   const reveal = useCallback(
-    (revealSpeed = 0, delay = 0, revealMode: RevealMode) => {
+    (revealSpeed = 0, delay = 0, revealMode: RevealMode, onRevealComplete?: () => void) => {
       const interval = revealSpeed < config.speed ? config.speed : revealSpeed;
 
       const run = () => {
@@ -80,6 +80,9 @@ export const useTextScramble = (text: string, options?: TextScrambleOptions) => 
           if (!getTruthyIndices<number>(obfuscator.bitmap).length) {
             stop();
             obfuscator.init();
+
+            // Run provided callback if available
+            onRevealComplete && onRevealComplete();
             return;
           }
 

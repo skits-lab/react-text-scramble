@@ -1,5 +1,10 @@
 import React, { useCallback, useEffect } from 'react';
-import { SYMBOLS } from './constants';
+import {
+  DEFAULT_REVEAL_DELAY,
+  DEFAULT_REVEAL_SPEED,
+  DEFAULT_SCRAMBLE_SPEED,
+  SYMBOLS,
+} from './constants';
 import { RevealMode } from './obfuscator';
 import { useTextScramble } from './useTextScramble';
 
@@ -13,6 +18,7 @@ type TextScrambleProps = {
   revealDelay?: number;
   revealSpeed?: number;
   revealMode?: RevealMode;
+  onRevealComplete?: () => void;
 };
 
 export const TextScramble: React.FC<TextScrambleProps> = ({
@@ -20,11 +26,12 @@ export const TextScramble: React.FC<TextScrambleProps> = ({
   wrappingElement,
   characters = SYMBOLS,
   autostart = true,
-  scrambleSpeed = 50,
-  revealDelay = 500,
+  scrambleSpeed = DEFAULT_SCRAMBLE_SPEED,
   revealText = false,
-  revealSpeed,
+  revealSpeed = DEFAULT_REVEAL_SPEED,
+  revealDelay = DEFAULT_REVEAL_DELAY,
   revealMode = 'random',
+  onRevealComplete,
 }) => {
   const { state, reveal, start, stop } = useTextScramble(text, {
     characters,
@@ -32,8 +39,8 @@ export const TextScramble: React.FC<TextScrambleProps> = ({
   });
 
   const handleRevealText = useCallback(
-    () => reveal(revealSpeed, revealDelay, revealMode),
-    [revealDelay, reveal, revealMode, revealSpeed],
+    () => reveal(revealSpeed, revealDelay, revealMode, onRevealComplete),
+    [reveal, revealSpeed, revealDelay, revealMode, onRevealComplete],
   );
 
   useEffect(() => {

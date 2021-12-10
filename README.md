@@ -76,22 +76,26 @@ export const CustomTextScrambler: React.FC<TextScrambleProps> = ({ text }) => {
 
 Flexible component API
 
-| Prop              | Type                                                  | Description                                                                                                                                                          | Default                                        |
-| ----------------- | ----------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
-| `text`            | string                                                | The text string to scramble                                                                                                                                          | `-`                                            |
-| `autostart`       | boolean                                               | Autostart the text scrambler                                                                                                                                         | `true`                                         |
-| `wrappingElement` | React.FunctionComponent, React.ComponentClass, string | Custom wrapper for the provided text<br/>e.g `'h1'`, `MyComponent`                                                                                                   | `-`                                            |
-| `characters`      | string                                                | 0                                                                                                                                                                    | `abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+-={}[]` |
-| `scrambleSpeed`   | number                                                | The speed used when scrambling the provided text                                                                                                                     | `50`                                           |
-| `revealText`      | boolean                                               | Scrambles and reveals the provided text - See reveal settings below to configure                                                                                     | `false`                                        |
-| `revealSpeed`     | number                                                | How fast each letter should be revealed                                                                                                                              | `0`                                            |
-| `revealDelay`     | number                                                | How long before the text is revealed                                                                                                                                 | `-`                                            |
-| `revealMode`      | 'random' or 'typewriter'                              | The mode to use when revealing the text<br/> When set to`random` letters will revealed randomly. When set to `typewriter` letter will be revealed from left to right | `random`                                       |
+| Prop               | Type                                                        | Description                                                                                                                                                          | Default    |
+| ------------------ | ----------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| `text`\*           | `string`                                                    | The text string to scramble                                                                                                                                          |            |
+| `autostart`        | `boolean`                                                   | Autostart the text scrambler                                                                                                                                         | `true`     |
+| `wrappingElement`  | `React.FunctionComponent \| React.ComponentClass \| string` | Custom wrapper for the provided text<br/>e.g `'h1'`, `MyComponent`                                                                                                   |            |
+| `characters`       | `string`                                                    | The characters used to scramble the provided text                                                                                                                    | `SYMBOLS`¹ |
+| `scrambleSpeed`    | `number`                                                    | The speed used when scrambling the provided text                                                                                                                     | `30`       |
+| `revealText`       | `boolean`                                                   | Scrambles and reveals the provided text - See reveal settings below to configure                                                                                     | `false`    |
+| `revealSpeed`      | `number`                                                    | How fast each letter should be revealed                                                                                                                              | `100`      |
+| `revealDelay`      | `number`                                                    | How long before the text is revealed                                                                                                                                 | `1000`     |
+| `revealMode`       | `'random' \| 'typewriter'`                                  | The mode to use when revealing the text<br/> When set to`random` letters will revealed randomly. When set to `typewriter` letter will be revealed from left to right | `random`   |
+| `onRevealComplete` | `function`                                                  | A callback that is triggered when text reveal is completed - e.g. onRevealComplete={() => console.log('Text revealed!')}                                             |            |
+
+\* required<br />
+¹ `const SYMBOLS = 'abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+-={}[]'`
 
 ## `useTextScramble`
 
 ```ts
-const useTextScramble: (
+useTextScramble: (
   text: string,
   options?: TextScrambleOptions | undefined
 ) => {
@@ -104,11 +108,13 @@ const useTextScramble: (
 
 ### TextScrambleOptions
 
-| Option       | Type     | Description                                       | Default                                        |
-| ------------ | -------- | ------------------------------------------------- | ---------------------------------------------- |
-| `characters` | string   | The characters used to scramble the provided text | `abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+-={}[]` |
-| `exclude`    | string[] | Characters to exclude from the text scrambler     | `[' ']`                                        |
-| `speed`      | string   | The speed used when scrambling the provided text  | `50`                                           |
+| Option       | Type     | Description                                       | Default    |
+| ------------ | -------- | ------------------------------------------------- | ---------- |
+| `characters` | string   | The characters used to scramble the provided text | `SYMBOLS`¹ |
+| `exclude`    | string[] | Characters to exclude from the text scrambler     | `[' ']`    |
+| `speed`      | string   | The speed used when scrambling the provided text  | `30`       |
+
+¹ `const SYMBOLS = 'abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+-={}[]'`
 
 ---
 
